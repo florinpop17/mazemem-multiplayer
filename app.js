@@ -32,6 +32,7 @@ function checkIfUserWon(user) {
         user.finished = true;
         user.endTime = Date.now();
         user.finishedTime = user.endTime - user.startTime;
+        console.log('user got to end')
     }
 }
 
@@ -65,7 +66,10 @@ io.sockets.on('connection', (socket) => {
             if(user.id === updatedUser.id){
                 user.i = updatedUser.i;
                 user.j = updatedUser.j;
-                checkIfUserWon(user);
+                
+                // Check if the user haven't already won
+                if(!user.finished)
+                    checkIfUserWon(user);
             } 
         });
     });
