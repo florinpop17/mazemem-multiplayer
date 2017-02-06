@@ -11,8 +11,8 @@ let Maze = require('./libs/maze');
 let connections = [];
 let users = [];
 
-let canvasSize = 600; // Same as on client
-let nrOfRows = 5; // Same as on client
+let canvasSize = 650; // Same as on client
+let nrOfRows = 10; // Same as on client
 
 // Creating the maze
 let maze = new Maze(canvasSize, nrOfRows);
@@ -66,6 +66,7 @@ io.sockets.on('connection', (socket) => {
             if(user.id === updatedUser.id){
                 user.i = updatedUser.i;
                 user.j = updatedUser.j;
+                user.name = updatedUser.name;
                 
                 // Check if the user haven't already won
                 if(!user.finished)

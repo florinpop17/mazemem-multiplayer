@@ -3,7 +3,7 @@ var grid;
 var user;
 var users;
 var canvasSize = 650; // Same as on server
-var nrOfRows = 12; // Same as on server
+var nrOfRows = 10; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
 var offset = 4; // Small offset for the user ellipses
@@ -25,6 +25,7 @@ startBtn.addEventListener('click', function(){
     }
     
     gameIsRunning = true;
+    loop();
 });
 
 function setup() {
@@ -69,8 +70,7 @@ function draw() {
     background('#3498db');
     
     //if isn't undefined and isn't false
-    if(gameIsRunning && !gameIsRunning){
-        console.log('running ?!?!?!?!?!?')
+    if(gameIsRunning){
         if(grid){
             drawGrid();
         }
@@ -163,7 +163,7 @@ function drawAUser(_user, color){
     ellipse(_user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2, cellWidth - 2*offset, cellHeight - 2*offset);
     
     // Draw user name
-    textSize(10);
+    textSize(14);
     textAlign(CENTER, CENTER);
     fill(255);
     text(_user.name, _user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2);
