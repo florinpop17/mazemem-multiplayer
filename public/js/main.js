@@ -6,7 +6,7 @@ var canvasSize = 700; // Same as on server
 var nrOfRows = 15; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
-var offset = 5; // Small offset for smaller user box
+var offset = 4; // Small offset for smaller user box
 
 var thisUserColor = '#e67e22';
 var othersColor = '#c0392b';
@@ -50,6 +50,9 @@ function draw() {
         drawUsers();
     }
     
+    // Moving the user if pressed the arrows and if possible to move
+    moveUser();
+    
     // Drawing this user
     drawAUser(user, thisUserColor);
     
@@ -68,7 +71,7 @@ function drawGrid(){
         // Draw final cell
         if(cell.final){
             fill(255, 0, 255);
-            rect(cell.x + offset, cell.y + offset, cell.size - offset/2, cell.size - offset/2);
+            rect(cell.x, cell.y, cell.size, cell.size);
         }
         
         stroke('#000000');
@@ -108,4 +111,18 @@ function drawAUser(_user, color){
     noStroke();
     fill(color);
     ellipse(_user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2, cellWidth - 2*offset, cellHeight - 2*offset);
+}
+
+function moveUser() {
+    if (keyIsDown(LEFT_ARROW))
+        user.x -= speed;
+
+    if (keyIsDown(RIGHT_ARROW))
+        user.x += speed;
+
+    if (keyIsDown(UP_ARROW))
+        user.y -= speed;
+
+    if (keyIsDown(DOWN_ARROW))
+        user.y += speed;
 }
