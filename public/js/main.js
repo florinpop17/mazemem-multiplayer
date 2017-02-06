@@ -2,7 +2,7 @@ var socket;
 var grid;
 var user;
 var users;
-var canvasSize = 700; // Same as on server
+var canvasSize = 600; // Same as on server
 var nrOfRows = 10; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
@@ -90,7 +90,7 @@ function drawGrid(){
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
-        stroke('#000000');
+        stroke('#FFFFFF');
         strokeWeight(2);
         // The top wall
         if(cell.walls[0]){

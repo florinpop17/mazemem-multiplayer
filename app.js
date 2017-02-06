@@ -11,7 +11,7 @@ let Maze = require('./libs/maze');
 let connections = [];
 let users = [];
 
-let canvasSize = 700; // Same as on client
+let canvasSize = 600; // Same as on client
 let nrOfRows = 10; // Same as on client
 
 // Creating the maze
