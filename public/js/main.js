@@ -3,7 +3,7 @@ var grid;
 var user;
 var users;
 var canvasSize = 700; // Same as on server
-var nrOfRows = 15; // Same as on server
+var nrOfRows = 10; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
 var offset = 4; // Small offset for smaller user box
@@ -20,8 +20,7 @@ function setup() {
         i: 0,
         j: 0,
         name: 'SomeName',
-        finished: false,
-        timeToComplete: 0
+        finished: false
     }
     
     socket.emit('start', user);
