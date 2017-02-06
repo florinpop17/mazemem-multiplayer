@@ -28,7 +28,7 @@ function tick() {
 }
 
 function checkIfUserWon(user) {
-    if(maze.grid[maze.getIndex(user.j, user.i)]){
+    if(maze.grid[maze.getIndex(user.j, user.i)].final){
         user.finished = true;
         user.endTime = Date.now();
         user.finishedTime = user.endTime - user.startTime;
@@ -62,11 +62,11 @@ io.sockets.on('connection', (socket) => {
     // Getting the updatedUser information
     socket.on('userNewLocation', (updatedUser) =>{
         users.forEach(user => {
-           if(user.id === updatedUser.id){
-               user.i = updatedUser.i;
-               user.j = updatedUser.j;
-               checkIfUserWon(user);
-           } 
+            if(user.id === updatedUser.id){
+                user.i = updatedUser.i;
+                user.j = updatedUser.j;
+                checkIfUserWon(user);
+            } 
         });
     });
     
