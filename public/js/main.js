@@ -90,7 +90,7 @@ function drawGrid(){
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
-        stroke('#FFFFFF');
+        stroke('#000000');
         strokeWeight(2);
         // The top wall
         if(cell.walls[0]){
@@ -129,6 +129,7 @@ function drawAUser(_user, color){
     ellipse(_user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2, cellWidth - 2*offset, cellHeight - 2*offset);
     
     // Draw user name
+    textSize(12);
     textAlign(CENTER);
     fill(255);
     text(_user.name, _user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2);
