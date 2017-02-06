@@ -31,7 +31,6 @@ class Maze{
         while(this.areUnvisitedCells()) {
             
             // STEP 2 -> 1
-            
             // STEP 2 -> 1 -> 1
             next = this.getRandomNeighbor(current.i, current.j);
             if(next){
@@ -44,6 +43,7 @@ class Maze{
                 
                 // STEP 2 -> 1 -> 4
                 current = next;
+                current.visited = true;
             
             // STEP 2 -> 2
             } else if(stack.length > 0) {
@@ -59,11 +59,13 @@ class Maze{
     }
     
     areUnvisitedCells(){
-        this.grid.forEach(cell => {
-            if(!cell.visited)
-                return true;
-        });
-        return false;
+        var unvisitedCells = this.grid.filter(cell => !cell.visited);
+        
+        if(unvisitedCells){
+            return true;
+        } else {
+            return false;
+        }
     }
     
     getRandomNeighbor(i, j){

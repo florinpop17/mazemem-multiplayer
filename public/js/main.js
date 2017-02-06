@@ -61,6 +61,10 @@ function drawGrid(){
             line(cell.x, cell.y, cell.x, cell.y + cell.size);
         }
         
+        if(cell.visited){
+            fill(200, 0, 100);
+            rect(cell.x, cell.y, cell.size, cell.size);
+        }
         
         // Draw final cell
         if(cell.final){
