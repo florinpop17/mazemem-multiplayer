@@ -6,9 +6,12 @@ const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 3000;
 
+let Maze = require('./libs/maze');
+
 let connections = [];
 let users = [];
 
+let canvasSize = 700; // Same as on client
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,7 +24,6 @@ app.get('/', (req, res) => {
 server.listen(PORT, () => {
     console.log("Server listening on port", PORT);
 });
-
 
 io.sockets.on('connection', (socket) => {
     connections.push(socket);
