@@ -28,7 +28,7 @@ function setup() {
 }
 
 function draw() {
-    background(200, 0, 100);
+    background(50, 50, 200);
     
     
     if(grid){
