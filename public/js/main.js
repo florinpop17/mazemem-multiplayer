@@ -6,7 +6,7 @@ var canvasSize = 700; // Same as on server
 var nrOfRows = 15; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
-var offset = 3; // Small offset for smaller user box
+var offset = 4; // Small offset for smaller user box
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
@@ -16,8 +16,7 @@ function setup() {
     user = {
         i: 0,
         j: 0,
-        name: 'SomeName',
-        col: [random(255), random(255), random(255)]
+        name: 'SomeName'
     }
     
     socket.emit('start', user);
@@ -37,7 +36,7 @@ function setup() {
 }
 
 function draw() {
-    background(50, 50, 200);
+    background('#3498db');
     
     
     if(grid){
@@ -49,9 +48,7 @@ function draw() {
     }
     
     // Drawing this user
-    noStroke();
-    fill(user.col[0], user.col[1], user.col[2]);
-    rect(user.i * cellWidth, user.j * cellHeight, cellWidth, cellHeight);
+    drawAUser(user);
     
     socket.emit('userNewLocation', user);
 }
@@ -61,17 +58,17 @@ function drawGrid(){
         
         noStroke();
         if(cell.visited){
-            fill(50, 50, 200);
+            fill('#3498db');
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
         // Draw final cell
         if(cell.final){
-            fill('#0b0e21');
+            fill(255, 0, 255);
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
-        stroke('#FFFFFF');
+        stroke('#000000');
         strokeWeight(2);
         // The top wall
         if(cell.walls[0]){
@@ -99,8 +96,13 @@ function drawGrid(){
 function drawUsers(){
     users.forEach(user => {
         if(user.id !== socket.id) {// only draw the other users
-            fill(user.col[0], user.col[1], user.col[2]);
-            rect(user.i * cellWidth, user.j * cellHeight, cellWidth, cellHeight);
+            drawAUser(user);
         }
     });
+}
+
+function drawAUser(_user){
+    noStroke();
+    fill(_user.col[0], _user.col[1], _user.col[2]);
+//    rect(_user.i * cellWidth + offset, _user.j * cellHeight + offset, cellWidth - 2*offset, cellHeight - 2*offset);
 }
