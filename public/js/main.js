@@ -136,6 +136,8 @@ function keyPressed() {
             user.i--;
         }
     }
+    
+    checkIfUserWon(user.i, user.j);
 }
 
 function getIndex(i, j){
@@ -144,4 +146,10 @@ function getIndex(i, j){
         return -1;
     
     return j + i * nrOfRows;
+}
+
+function checkIfUserWon(i, j) {
+    if(grid[getIndex(i, j)].final){
+        console.log('wonnnnnnn');
+    }
 }
