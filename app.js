@@ -54,7 +54,7 @@ io.sockets.on('connection', (socket) => {
     
     // Getting the updatedUser information
     socket.on('userNewLocation', (updatedUser) =>{
-        user.forEach(user => {
+        users.forEach(user => {
            if(user.id === updatedUser.id){
                user.i = updatedUser.i;
                user.j = updatedUser.j;
