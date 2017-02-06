@@ -65,6 +65,13 @@ function draw() {
     // Drawing this user
     drawAUser(user, thisUserColor);
     
+    if(user.finished){
+        fill('#FFF');
+        textSize(40);
+        textAlign(CENTER);
+        text(`You completed in ${user.timeToComplete.toFixed(2)} seconds!`, width/2, height/2);
+    }
+    
     socket.emit('userNewLocation', user);
 }
 
