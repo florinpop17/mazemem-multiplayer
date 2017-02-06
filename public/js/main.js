@@ -3,7 +3,7 @@ var grid;
 var user;
 var users;
 var canvasSize = 600; // Same as on server
-var nrOfRows = 10; // Same as on server
+var nrOfRows = 5; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
 var offset = 4; // Small offset for smaller user box
