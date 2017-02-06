@@ -12,7 +12,7 @@ let connections = [];
 let users = [];
 
 let canvasSize = 700; // Same as on client
-let nrOfRows = 10; // Same as on client
+let nrOfRows = 15; // Same as on client
 
 // Creating the maze
 let maze = new Maze(canvasSize, nrOfRows);
@@ -30,7 +30,8 @@ function tick() {
 function checkIfUserWon(user) {
     if(maze.grid[maze.getIndex(user.j, user.i)]){
         user.finished = true;
-        user.endTime = performance.now();
+        user.endTime = Date.now();
+        user.finishedTime = user.endTime - user.startTime;
     }
 }
 
@@ -53,7 +54,7 @@ io.sockets.on('connection', (socket) => {
     // Starting the game + getting the user initial data into the users array
     socket.on('start', (user) => {
         let newUser = user;
-        newUser.startTime = performance.now();
+        newUser.startTime = Date.now();
         newUser.id = socket.id;        
         users.push(newUser);
     });
