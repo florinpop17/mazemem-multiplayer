@@ -18,6 +18,9 @@ class Maze{
     
     generateMaze(){
         
+        // Setting the final cell on a random position
+        let random = Math.floor(Math.random() * grid.length);
+        grid[random].final = true;
     }
 }
 
