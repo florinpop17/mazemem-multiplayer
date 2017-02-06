@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 3000;
 
+let connections = [];
+let users = [];
 
 
 app.use(express.static(__dirname + '/public'));
