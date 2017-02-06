@@ -50,7 +50,30 @@ class Maze{
         
         let top = this.grid[this.getIndex(i, j-1)];
         let right = this.grid[this.getIndex(i+1, j)];
-    }
+        let bottom = this.grid[this.getIndex(i, j+1)];
+        let left = this.grid[this.getIndex(i-1, j)];
+        
+        if(top && !top.visited)
+            neighbors.push(top);
+
+        if(right && !right.visited)
+            neighbors.push(right);
+
+        if(bottom && !bottom.visited)
+            neighbors.push(bottom);
+
+        if(left && !left.visited)
+            neighbors.push(left);
+
+        // If there are neighbors return a random one
+        if(neighbors.length > 0){
+            let r = Math.floor(Math.random() * neighbors.length);
+            return neighbors[r];
+        }
+
+        // Else return undefined
+        return undefined;
+        }
     
     getIndex(i, j){
         // Edge cases
