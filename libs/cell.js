@@ -9,6 +9,7 @@ class Cell{
         this.visited = false;
         this.hasPlayer = false;
         this.final = false;
+        this.col = [];
     }
 }
 

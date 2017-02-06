@@ -19,6 +19,16 @@ let maze = new Maze(canvasSize, nrOfRows);
 maze.createGrid();
 maze.generateMaze();
 
+
+// Set interval + Tick function
+setInterval(tick, 33);
+
+function tick() {
+    io.sockets.emit('tick', users);
+}
+
+
+
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -38,7 +48,7 @@ io.sockets.on('connection', (socket) => {
     // Starting the game + getting the user initial data into the users array
     socket.on('start', (user) => {
         let newUser = user;
-        newUser.id = socket.id;
+        newUser.id = socket.id;        
         users.push(newUser);
     });
     

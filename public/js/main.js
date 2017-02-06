@@ -1,6 +1,7 @@
 var socket;
 var grid;
 var user;
+var users;
 var canvasSize = 700; // Same as on server
 
 function setup() {
