@@ -83,7 +83,11 @@ function drawUserFinishedTimes() {
     usersThatFinished.sort(function(a, b){
         return a.timeToComplete - b.timeToComplete;
     }).forEach((user,idx) => {
-        text(`${user.name} - ${user.timeToComplete}`, 50, user.j * idx);
+        noStroke();
+        fill(255);
+        textSize(16);
+        textAlign(LEFT, CENTER);
+        text(`${user.name} - ${user.timeToComplete}`, 10, 20 * idx + 10);
     });
 }
 
