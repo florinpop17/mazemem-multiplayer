@@ -16,7 +16,8 @@ let nrOfRows = 15;
 
 // Creating the maze
 let maze = new Maze(canvasSize, nrOfRows);
-maze.createMaze();
+maze.createGrid();
+maze.generateMaze();
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -8,12 +8,16 @@ class Maze{
         this.cellSize = mazeSize / this.rows;
     }
     
-    createMaze(){
+    createGrid(){
         for(var i=0; i<this.rows; i++){
             for(var j=0; j<this.cols; j++){
                 this.grid.push(new Cell(i, j, this.cellSize));
             }
         }
+    }
+    
+    generateMaze(){
+        
     }
 }
 
