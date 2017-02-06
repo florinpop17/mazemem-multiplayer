@@ -12,7 +12,7 @@ let connections = [];
 let users = [];
 
 let canvasSize = 700; // Same as on client
-let nrOfRows = 15; // Same as on client
+let nrOfRows = 5; // Same as on client
 
 // Creating the maze
 let maze = new Maze(canvasSize, nrOfRows);
@@ -28,7 +28,7 @@ function tick() {
 }
 
 function checkIfUserWon(user) {
-    if(maze.grid[maze.getIndex(user.j, user.i)].final){
+    if(maze.grid[maze.getIndex(user.i, user.j)].final){
         user.finished = true;
         user.endTime = Date.now();
         user.finishedTime = user.endTime - user.startTime;
