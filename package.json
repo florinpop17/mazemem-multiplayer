@@ -1,0 +1,26 @@
+{
+  "name": "mazemem-multiplayer",
+  "version": "1.0.0",
+  "description": "The multiplayer version of the MazeMem game using Socket.io and p5js.",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.1",
+    "socket.io": "^1.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florinpop17/mazemem-multiplayer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/florinpop17/mazemem-multiplayer/issues"
+  },
+  "homepage": "https://github.com/florinpop17/mazemem-multiplayer#readme"
+}
