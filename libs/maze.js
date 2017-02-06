@@ -43,7 +43,13 @@ class Maze{
                 removeWalls(current, next);
                 
                 // STEP 2 -> 1 -> 4
+                current = next;
+            
+            // STEP 2 -> 2
+            } else if(stack.length > 0) {
                 
+                // STEP 2 -> 2 -> 1 & 2
+                current = stack.pop();
             }
         }
         
