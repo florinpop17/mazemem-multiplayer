@@ -6,7 +6,10 @@ var canvasSize = 700; // Same as on server
 var nrOfRows = 15; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
-var offset = 4; // Small offset for smaller user box
+var offset = 5; // Small offset for smaller user box
+
+var thisUserColor = '#e67e22';
+var othersColor = '#c0392b';
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
@@ -48,7 +51,7 @@ function draw() {
     }
     
     // Drawing this user
-    drawAUser(user);
+    drawAUser(user, thisUserColor);
     
     socket.emit('userNewLocation', user);
 }
@@ -65,7 +68,7 @@ function drawGrid(){
         // Draw final cell
         if(cell.final){
             fill(255, 0, 255);
-            rect(cell.x, cell.y, cell.size, cell.size);
+            rect(cell.x + offset, cell.y + offset, cell.size - offset/2, cell.size - offset/2);
         }
         
         stroke('#000000');
@@ -96,13 +99,13 @@ function drawGrid(){
 function drawUsers(){
     users.forEach(user => {
         if(user.id !== socket.id) {// only draw the other users
-            drawAUser(user);
+            drawAUser(user, othersColor);
         }
     });
 }
 
-function drawAUser(_user){
+function drawAUser(_user, color){
     noStroke();
-    fill(_user.col[0], _user.col[1], _user.col[2]);
-//    rect(_user.i * cellWidth + offset, _user.j * cellHeight + offset, cellWidth - 2*offset, cellHeight - 2*offset);
+    fill(color);
+    ellipse(_user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2, cellWidth - 2*offset, cellHeight - 2*offset);
 }
