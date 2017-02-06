@@ -18,10 +18,10 @@ function setup() {
     
     socket.emit('start', user);
     
-    // Getting the grid
+    // Getting the grid && setting the user.id
     socket.on('theGrid', function(_grid){
         grid = _grid; 
-        
+        user.id = socket.id;
         loop();
     });
     
@@ -35,6 +35,8 @@ function draw() {
     if(grid){
         drawGrid();
     }
+    
+    socket.emit('userNewLocation', user);
 }
 
 function drawGrid(){
@@ -49,11 +51,6 @@ function drawGrid(){
         // Draw final cell
         if(cell.final){
             fill('#0b0e21');
-            rect(cell.x, cell.y, cell.size, cell.size);
-        }
-        
-        if(cell.hasPlayer){
-            fill(cell.col[0], cell.col[1], cell.col[2]);
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
