@@ -27,9 +27,16 @@ class Maze{
         current.visited = true;
         
         // STEP 2
-        while(this.areUnvisited) {
+        while(this.areUnvisitedCells()) {
+            
             // STEP 2 -> 1
+            
+            // STEP 2 -> 1 -> 1
             next = this.getRandomNeighbor(current.i, current.j);
+            if(next){
+                
+                // 
+            }
         }
         
         // Setting the final cell on a random position
@@ -37,7 +44,7 @@ class Maze{
         this.grid[random].final = true;
     }
     
-    areUnvisited(){
+    areUnvisitedCells(){
         grid.forEach(cell => {
             if(!cell.visited)
                 return true;
