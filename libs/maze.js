@@ -1,5 +1,12 @@
+let Cell = require('./cell');
+
 class Maze{
-    constructor(){
+    constructor(mazeSize, mazeRows){
+        this.size = mazeSize;
+        this.rows = mazeRows;
+    }
+    
+    createMaze(){
         
     }
 }
