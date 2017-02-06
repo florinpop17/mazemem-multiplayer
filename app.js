@@ -37,7 +37,7 @@ io.sockets.on('connection', (socket) => {
     
     // Starting the game + getting the user initial data into the users array
     socket.on('start', (user) => {
-        users.push(user); 
+        users.push(user);
     });
     
     // Sending the grid to the user
