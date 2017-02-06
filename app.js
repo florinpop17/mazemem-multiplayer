@@ -35,6 +35,8 @@ io.sockets.on('connection', (socket) => {
     connections.push(socket);
     console.log('Connected: %s sockets connected.', connections.length);
     
+    socket.emit('theMaze', maze);
+    
     //Disconnect
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
