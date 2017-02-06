@@ -64,7 +64,7 @@ function drawGrid(){
         
         // Draw final cell
         if(cell.final){
-            fill(cell.col[0], cell.col[1], cell.col[2]);
+            fill('#0b0e21');
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
