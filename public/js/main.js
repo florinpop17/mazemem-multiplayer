@@ -50,9 +50,6 @@ function draw() {
         drawUsers();
     }
     
-    // Moving the user if pressed the arrows and if possible to move
-    moveUser();
-    
     // Drawing this user
     drawAUser(user, thisUserColor);
     
@@ -113,16 +110,40 @@ function drawAUser(_user, color){
     ellipse(_user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2, cellWidth - 2*offset, cellHeight - 2*offset);
 }
 
-function moveUser() {
-    if (keyIsDown(LEFT_ARROW))
-        user.x -= speed;
+function keyPressed() {
+    
+    console.log('obj');
+    
+    // Check if that cell exists and if there isn't a wall opposite to the key pressed
+    if(keyCode === UP_ARROW){
+        if(grid[getIndex(user.i, user.j) && !grid[getIndex(user.i, user.j - 1)].walls[2]]){
+            user.j--;
+        }
+    }
+    
+    if(keyCode === RIGHT_ARROW){
+        if(grid[getIndex(user.i, user.j) && !grid[getIndex(user.i + 1, user.j)].walls[3]]){
+            user.i++;
+        }
+    }
+    
+    if(keyCode === DOWN_ARROW){
+        if(grid[getIndex(user.i, user.j) && !grid[getIndex(user.i, user.j + 1)].walls[0]]){
+            user.j++;
+        }
+    }
+    
+    if(keyCode === LEFT_ARROW){
+        if(grid[getIndex(user.i, user.j) && !grid[getIndex(user.i - 1, user.j)].walls[1]]){
+            user.i--;
+        }
+    }
+}
 
-    if (keyIsDown(RIGHT_ARROW))
-        user.x += speed;
-
-    if (keyIsDown(UP_ARROW))
-        user.y -= speed;
-
-    if (keyIsDown(DOWN_ARROW))
-        user.y += speed;
+function getIndex(i, j){
+    // Same function as on the server
+    if(i < 0 || j < 0 || i > nrOfRows - 1 || j > nrOfRows - 1)
+        return -1;
+    
+    return j + i * nrOfRows;
 }
