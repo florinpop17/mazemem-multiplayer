@@ -4,6 +4,7 @@ var user;
 var users;
 var canvasSize = 700; // Same as on server
 var nrOfRows = 15; // Same as on server
+var cellWidth = cellHeight = canvasSize / nrOfRows;
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
@@ -45,6 +46,10 @@ function draw() {
         drawUsers();
     }
     
+    // Drawing this user
+    fill(user.col[0], user.col[1], user.col[2]);
+    rect(user.i * cellWidth, user.j * cellHeight, cellWidth, cellHeight);
+    
     socket.emit('userNewLocation', user);
 }
 
@@ -85,5 +90,14 @@ function drawGrid(){
             line(cell.x, cell.y, cell.x, cell.y + cell.size);
         }
         
+    });
+}
+
+function drawUsers(){
+    users.forEach(user => {
+        if(user.id !== socket.id) {// only draw the other users
+            fill(user.col[0], user.col[1], user.col[2]);
+            rect(user.i * cellWidth, user.j * cellHeight, cellWidth, cellHeight);
+        }
     });
 }
