@@ -23,13 +23,13 @@ class Maze{
         // Recursive backtracker
         
         // STEP 1
-        current = grid[0];
+        current = this.grid[0];
         current.visited = true;
         
         // STEP 2
         while(this.areUnvisited) {
             // STEP 2 -> 1
-            next = checkNeighbors(current.i, current.j);
+            next = this.getRandomNeighbor(current.i, current.j);
         }
         
         // Setting the final cell on a random position
@@ -43,6 +43,20 @@ class Maze{
                 return true;
         });
         return false;
+    }
+    
+    getRandomNeighbor(i, j){
+        let neighbors = [];
+        
+        let top = this.grid[this.getIndex(i, j-1)];
+        let right = this.grid[this.getIndex(i+1, j)];
+    }
+    
+    getIndex(i, j){
+        // Edge cases
+        if(i < 0 || j < 0 || i > this.rows - 1 || j > this.cols - 1) return -1;
+        
+        return j + i * this.rows;
     }
 }
 
