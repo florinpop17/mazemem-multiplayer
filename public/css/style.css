@@ -20,9 +20,6 @@ body, .popup-container {
 
 .popup-container {
     justify-content: center;
-    
-    /* Remove this to show the popup */
-    display: none;
 }
 
 #start, #restart {
