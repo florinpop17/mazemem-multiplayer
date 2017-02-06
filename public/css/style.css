@@ -84,6 +84,11 @@ p {
     text-align: center;
 }
 
+.popup small{ 
+    display: block;
+    text-align: center;
+}
+
 .popup p {
     line-height: 20px;
 }
