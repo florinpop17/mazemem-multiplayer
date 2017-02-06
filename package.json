@@ -4,6 +4,7 @@
   "description": "The multiplayer version of the MazeMem game using Socket.io and p5js.",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "express": "^4.14.1",
     "socket.io": "^1.7.2"
   },
