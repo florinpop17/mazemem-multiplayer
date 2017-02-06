@@ -21,11 +21,9 @@ function setup() {
     socket.on('theGrid', function(_grid){
         grid = _grid; 
         
-        console.log('got maze / loop');
         loop();
     });
     
-    console.log('setup / noLoop');
     noLoop();
 }
 

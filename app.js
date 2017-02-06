@@ -35,6 +35,11 @@ io.sockets.on('connection', (socket) => {
     connections.push(socket);
     console.log('Connected: %s sockets connected.', connections.length);
     
+    // Starting the game + getting the user initial data into the users array
+    socket.on('start', (user) => {
+        users.push(user); 
+    });
+    
     // Sending the grid to the user
     socket.emit('theGrid', maze.grid);
     
