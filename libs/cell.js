@@ -8,3 +8,5 @@ class Cell{
         this.walls = [true, true, true, true];
     }
 }
+
+module.exports = Cell;
