@@ -1,6 +1,7 @@
 let Cell = require('./cell');
 
 let next, current;
+let stack = [];
 
 class Maze{
     constructor(mazeSize, mazeRows){
@@ -35,7 +36,14 @@ class Maze{
             next = this.getRandomNeighbor(current.i, current.j);
             if(next){
                 
-                // 
+                // STEP 2 -> 1 -> 2
+                stack.push(current);
+                
+                // STEP 2 -> 1 -> 3
+                removeWalls(current, next);
+                
+                // STEP 2 -> 1 -> 4
+                
             }
         }
         
@@ -45,7 +53,7 @@ class Maze{
     }
     
     areUnvisitedCells(){
-        grid.forEach(cell => {
+        this.grid.forEach(cell => {
             if(!cell.visited)
                 return true;
         });
@@ -87,6 +95,27 @@ class Maze{
         if(i < 0 || j < 0 || i > this.rows - 1 || j > this.cols - 1) return -1;
         
         return j + i * this.rows;
+    }
+    
+    removeWalls(a, b){
+        let x = a.i - b.i;
+        let y = a.j - b.j;
+        
+        if(x === 1){
+            a.walls[3] = false;
+            b.walls[1] = false;   
+        } else if(x === -1) {
+            a.walls[1] = false;
+            b.walls[3] = false;
+        }
+        
+        if(y === 1){
+            a.walls[0] = false;
+            b.walls[2] = false;   
+        } else if(y === -1) {
+            a.walls[2] = false;
+            b.walls[0] = false;
+        }
     }
 }
 
