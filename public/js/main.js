@@ -68,5 +68,10 @@ function drawGrid(){
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
+        if(cell.hasPlayer){
+            fill(cell.col[0], cell.col[1], cell.col[2]);
+            rect(cell.x, cell.y, cell.size, cell.size);
+        }
+        
     });
 }
