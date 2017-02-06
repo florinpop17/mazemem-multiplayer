@@ -28,7 +28,7 @@ function setup() {
 }
 
 function draw() {
-    background(51);
+    background(200, 0, 100);
     
     
     if(grid){
@@ -38,6 +38,23 @@ function draw() {
 
 function drawGrid(){
     grid.forEach(cell => {
+        
+        noStroke();
+        if(cell.visited){
+            fill(50, 50, 200);
+            rect(cell.x, cell.y, cell.size, cell.size);
+        }
+        
+        // Draw final cell
+        if(cell.final){
+            fill('#0b0e21');
+            rect(cell.x, cell.y, cell.size, cell.size);
+        }
+        
+        if(cell.hasPlayer){
+            fill(cell.col[0], cell.col[1], cell.col[2]);
+            rect(cell.x, cell.y, cell.size, cell.size);
+        }
         
         stroke('#FFFFFF');
         strokeWeight(2);
@@ -59,22 +76,6 @@ function drawGrid(){
         // The left wall
         if(cell.walls[3]){
             line(cell.x, cell.y, cell.x, cell.y + cell.size);
-        }
-        
-        if(cell.visited){
-            fill(200, 0, 100);
-            rect(cell.x, cell.y, cell.size, cell.size);
-        }
-        
-        // Draw final cell
-        if(cell.final){
-            fill('#0b0e21');
-            rect(cell.x, cell.y, cell.size, cell.size);
-        }
-        
-        if(cell.hasPlayer){
-            fill(cell.col[0], cell.col[1], cell.col[2]);
-            rect(cell.x, cell.y, cell.size, cell.size);
         }
         
     });

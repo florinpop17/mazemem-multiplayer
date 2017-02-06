@@ -39,7 +39,7 @@ class Maze{
                 stack.push(current);
                 
                 // STEP 2 -> 1 -> 3
-                removeWalls(current, next);
+                this.removeWalls(current, next);
                 
                 // STEP 2 -> 1 -> 4
                 current = next;
@@ -61,7 +61,7 @@ class Maze{
     areUnvisitedCells(){
         var unvisitedCells = this.grid.filter(cell => !cell.visited);
         
-        if(unvisitedCells){
+        if(unvisitedCells.length > 0){
             return true;
         } else {
             return false;
