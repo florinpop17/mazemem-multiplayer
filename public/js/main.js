@@ -90,7 +90,7 @@ function drawGrid(){
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
-        stroke('#000000');
+        stroke('#FFFFFF');
         strokeWeight(2);
         // The top wall
         if(cell.walls[0]){
