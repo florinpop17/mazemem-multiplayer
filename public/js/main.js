@@ -1,11 +1,21 @@
 var socket;
 var grid;
+var user;
 var canvasSize = 700; // Same as on server
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
     socket = io.connect();
+    
+    user = {
+        i: 0,
+        j: 0,
+        name: 'SomeName',
+        col: '#FF00FF'
+    }
+    
+    socket.emit('start', user);
     
     // Getting the grid
     socket.on('theGrid', function(_grid){
