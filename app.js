@@ -27,7 +27,10 @@ function tick() {
     io.sockets.emit('tick', users);
 }
 
-
+function checkIfUserWon(user) {
+    if(maze.grid[maze.getIndex(user.j, user.i)])
+        console.log('won');
+}
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -58,6 +61,7 @@ io.sockets.on('connection', (socket) => {
            if(user.id === updatedUser.id){
                user.i = updatedUser.i;
                user.j = updatedUser.j;
+               checkIfUserWon(user);
            } 
         });
     });
