@@ -23,11 +23,36 @@ function draw() {
     background(51);
     
     
-    if(maze){
+    if(grid){
         drawGrid();
     }
 }
 
 function drawGrid(){
-    
+    grid.forEach(cell => {
+        
+        stroke('#FFFFFF');
+        strokeWeight(2);
+        // The top wall
+        if(cell.walls[0]){
+            line(cell.x, cell.y, cell.x + cell.size, cell.y);
+        }
+        
+        // The right wall
+        if(cell.walls[1]){
+            
+        }
+        
+        // The bottom wall
+        if(cell.walls[2]){
+            
+        }
+        
+        // The left wall
+        if(cell.walls[3]){
+            
+        }
+        
+        
+    });
 }
