@@ -114,29 +114,25 @@ function keyPressed() {
     
     // Check if that cell exists and if there isn't a wall opposite to the key pressed
     if(keyCode === UP_ARROW){
-        console.log('up')
-        if(grid[getIndex(user.i, user.j - 1) && !grid[getIndex(user.i, user.j - 1)].walls[2]){
+        if(grid[getIndex(user.i, user.j - 1)] && !grid[getIndex(user.i, user.j - 1)].walls[2]){
             user.j--;
         }
     }
     
     if(keyCode === RIGHT_ARROW){
-        console.log('right')
-        if(grid[getIndex(user.i + 1, user.j) && !grid[getIndex(user.i + 1, user.j)].walls[3]){
+        if(grid[getIndex(user.i + 1, user.j)] && !grid[getIndex(user.i + 1, user.j)].walls[3]){
             user.i++;
         }
     }
     
     if(keyCode === DOWN_ARROW){
-        console.log('down')
-        if(grid[getIndex(user.i, user.j + 1) && !grid[getIndex(user.i, user.j + 1)].walls[0]){
+        if(grid[getIndex(user.i, user.j + 1)] && !grid[getIndex(user.i, user.j + 1)].walls[0]){
             user.j++;
         }
     }
     
     if(keyCode === LEFT_ARROW){
-        console.log('left')
-        if(grid[getIndex(user.i - 1, user.j) && !grid[getIndex(user.i - 1, user.j)].walls[1]){
+        if(grid[getIndex(user.i - 1, user.j)] && !grid[getIndex(user.i - 1, user.j)].walls[1]){
             user.i--;
         }
     }
@@ -147,5 +143,5 @@ function getIndex(i, j){
     if(i < 0 || j < 0 || i > nrOfRows - 1 || j > nrOfRows - 1)
         return -1;
     
-    return i + j * nrOfRows;
+    return j + i * nrOfRows;
 }
