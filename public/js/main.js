@@ -3,6 +3,7 @@ var grid;
 var user;
 var users;
 var canvasSize = 700; // Same as on server
+var nrOfRows = 15; // Same as on server
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
@@ -25,6 +26,10 @@ function setup() {
         loop();
     });
     
+    socket.on('tick', function(_users){
+        users = _users; 
+    });
+    
     noLoop();
 }
 
@@ -34,6 +39,10 @@ function draw() {
     
     if(grid){
         drawGrid();
+    }
+    
+    if(users){
+        drawUsers();
     }
     
     socket.emit('userNewLocation', user);
