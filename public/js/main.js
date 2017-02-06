@@ -62,5 +62,11 @@ function drawGrid(){
         }
         
         
+        // Draw final cell
+        if(cell.final){
+            fill('#0b0e21');
+            rect(cell.x, cell.y, cell.size, cell.size);
+        }
+        
     });
 }
