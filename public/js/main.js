@@ -12,7 +12,7 @@ function setup() {
         i: 0,
         j: 0,
         name: 'SomeName',
-        col: '#FF00FF'
+        col: [random(255), random(255), random(255)]
     }
     
     socket.emit('start', user);
@@ -64,7 +64,7 @@ function drawGrid(){
         
         // Draw final cell
         if(cell.final){
-            fill('#0b0e21');
+            fill(cell.col[0], cell.col[1], cell.col[2]);
             rect(cell.x, cell.y, cell.size, cell.size);
         }
         
