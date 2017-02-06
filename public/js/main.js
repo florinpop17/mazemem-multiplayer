@@ -17,6 +17,14 @@ var startBtn = document.getElementById('startBtn');
 
 startBtn.addEventListener('click', function(){
     document.getElementById('popup').style.display = 'none';
+    
+    var newName = document.getElementById('name').value;
+    
+    if(newName){
+        user.name = newName;   
+    }
+    
+    gameIsRunning = true;
 });
 
 function setup() {
@@ -60,7 +68,9 @@ function setup() {
 function draw() {
     background('#3498db');
     
-    if(!gameIsRunning){
+    //if isn't undefined and isn't false
+    if(gameIsRunning && !gameIsRunning){
+        console.log('running ?!?!?!?!?!?')
         if(grid){
             drawGrid();
         }
