@@ -31,7 +31,7 @@ function checkIfUserWon(user) {
     if(maze.grid[maze.getIndex(user.i, user.j)].final){
         user.finished = true;
         user.endTime = Date.now();
-        user.finishedTime = user.endTime - user.startTime;
+        user.timeToComplete = (user.endTime - user.startTime) / 1000;
         console.log('user got to end')
     }
 }

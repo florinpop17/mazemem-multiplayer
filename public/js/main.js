@@ -20,7 +20,10 @@ function setup() {
         i: 0,
         j: 0,
         name: 'SomeName',
-        finished: false
+        finished: false,
+        startTime: 0,
+        endTime: 0,
+        timeToComplete: 0
     }
     
     socket.emit('start', user);
@@ -33,7 +36,15 @@ function setup() {
     });
     
     socket.on('tick', function(_users){
-        users = _users; 
+        users = _users;
+        users.forEach(aUser => {
+            if(aUser.id === user.id){
+                user.finished = aUser.finished;
+                user.startTime = aUser.startTime;
+                user.endTime = aUser.endTime;
+                user.timeToComplete = aUser.timeToComplete;
+            }
+        })
     });
     
     noLoop();
