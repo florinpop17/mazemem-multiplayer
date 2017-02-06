@@ -52,6 +52,16 @@ io.sockets.on('connection', (socket) => {
         users.push(newUser);
     });
     
+    // Getting the updatedUser information
+    socket.on('userNewLocation', (updatedUser) =>{
+        user.forEach(user => {
+           if(user.id === updatedUser.id){
+               user.i = updatedUser.i;
+               user.j = updatedUser.j;
+           } 
+        });
+    });
+    
     // Sending the grid to the user
     socket.emit('theGrid', maze.grid);
     

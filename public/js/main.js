@@ -6,6 +6,8 @@ var canvasSize = 700; // Same as on server
 var nrOfRows = 15; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
+var offset = 3; // Small offset for smaller user box
+
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
@@ -47,6 +49,7 @@ function draw() {
     }
     
     // Drawing this user
+    noStroke();
     fill(user.col[0], user.col[1], user.col[2]);
     rect(user.i * cellWidth, user.j * cellHeight, cellWidth, cellHeight);
     
