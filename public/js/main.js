@@ -60,19 +60,31 @@ function draw() {
     
     if(users){
         drawUsers();
+    
+        // Draw the total time to complete for each user
+        drawUserFinishedTimes();
     }
     
     // Drawing this user
     drawAUser(user, thisUserColor);
     
-    if(user.finished){
-        fill('#FFF');
-        textSize(40);
-        textAlign(CENTER);
-        text(`You completed in ${user.timeToComplete.toFixed(2)} seconds!`, width/2, height/2);
-    }
-    
     socket.emit('userNewLocation', user);
+}
+
+function drawUserFinishedTimes() {
+    var usersThatFinished = [];
+    users.forEach(user => {
+        if(user.finished){
+            usersThatFinished.push(user);
+        } 
+    });
+    
+    
+    usersThatFinished.sort(function(a, b){
+        return a.timeToComplete - b.timeToComplete;
+    }).forEach((user,idx) => {
+        text(`${user.name} - ${user.timeToComplete}`, 50, user.j * idx);
+    });
 }
 
 function drawGrid(){
@@ -129,8 +141,8 @@ function drawAUser(_user, color){
     ellipse(_user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2, cellWidth - 2*offset, cellHeight - 2*offset);
     
     // Draw user name
-    textSize(12);
-    textAlign(CENTER);
+    textSize(10);
+    textAlign(CENTER, CENTER);
     fill(255);
     text(_user.name, _user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2);
 }

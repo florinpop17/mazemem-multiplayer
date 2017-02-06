@@ -12,7 +12,7 @@ let connections = [];
 let users = [];
 
 let canvasSize = 600; // Same as on client
-let nrOfRows = 10; // Same as on client
+let nrOfRows = 5; // Same as on client
 
 // Creating the maze
 let maze = new Maze(canvasSize, nrOfRows);
