@@ -35,7 +35,8 @@ io.sockets.on('connection', (socket) => {
     connections.push(socket);
     console.log('Connected: %s sockets connected.', connections.length);
     
-    socket.emit('theMaze', maze);
+    // Sending the grid to the user
+    socket.emit('theGrid', maze.grid);
     
     //Disconnect
     socket.on('disconnect', (data) => {

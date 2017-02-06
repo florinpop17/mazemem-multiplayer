@@ -1,13 +1,15 @@
 var socket;
-var maze;
+var grid;
 var canvasSize = 700; // Same as on server
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
     socket = io.connect();
-    socket.on('theMaze', function(_maze){
-        maze = _maze; 
+    
+    // Getting the grid
+    socket.on('theGrid', function(_grid){
+        grid = _grid; 
         
         console.log('got maze / loop');
         loop();
@@ -22,10 +24,10 @@ function draw() {
     
     
     if(maze){
-        drawMaze();
+        drawGrid();
     }
 }
 
-function drawMaze(){
+function drawGrid(){
     
 }
