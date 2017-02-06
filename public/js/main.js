@@ -3,7 +3,7 @@ var grid;
 var user;
 var users;
 var canvasSize = 700; // Same as on server
-var nrOfRows = 5; // Same as on server
+var nrOfRows = 10; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
 var offset = 4; // Small offset for smaller user box
@@ -127,6 +127,11 @@ function drawAUser(_user, color){
     noStroke();
     fill(color);
     ellipse(_user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2, cellWidth - 2*offset, cellHeight - 2*offset);
+    
+    // Draw user name
+    textAlign(CENTER);
+    fill(255);
+    text(_user.name, _user.i * cellWidth + cellWidth/2, _user.j * cellHeight + cellHeight/2);
 }
 
 function keyPressed() {
