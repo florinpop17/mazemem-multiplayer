@@ -14,7 +14,9 @@ let users = [];
 let canvasSize = 700; // Same as on client
 let nrOfRows = 15;
 
+// Creating the maze
 let maze = new Maze(canvasSize, nrOfRows);
+maze.createMaze();
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
