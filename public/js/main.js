@@ -40,17 +40,17 @@ function drawGrid(){
         
         // The right wall
         if(cell.walls[1]){
-            
+            line(cell.x + cell.size, cell.y, cell.x + cell.size, cell.y + cell.size);
         }
         
         // The bottom wall
         if(cell.walls[2]){
-            
+            line(cell.x, cell.y + cell.size, cell.x + cell.size, cell.y + cell.size);
         }
         
         // The left wall
         if(cell.walls[3]){
-            
+            line(cell.x, cell.y, cell.x, cell.y + cell.size);
         }
         
         
