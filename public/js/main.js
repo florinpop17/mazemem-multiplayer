@@ -11,6 +11,8 @@ var offset = 4; // Small offset for smaller user box
 var thisUserColor = '#e67e22';
 var othersColor = '#c0392b';
 
+var gameIsRunning = false;
+
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
@@ -32,7 +34,6 @@ function setup() {
     socket.on('theGrid', function(_grid){
         grid = _grid; 
         user.id = socket.id;
-        loop();
     });
     
     socket.on('tick', function(_users){
@@ -53,22 +54,23 @@ function setup() {
 function draw() {
     background('#3498db');
     
-    
-    if(grid){
-        drawGrid();
+    if(!gameIsRunning){
+        if(grid){
+            drawGrid();
+        }
+
+        if(users){
+            drawUsers();
+
+            // Draw the total time to complete for each user
+            drawUserFinishedTimes();
+        }
+
+        // Drawing this user
+        drawAUser(user, thisUserColor);
+
+        socket.emit('userNewLocation', user);
     }
-    
-    if(users){
-        drawUsers();
-    
-        // Draw the total time to complete for each user
-        drawUserFinishedTimes();
-    }
-    
-    // Drawing this user
-    drawAUser(user, thisUserColor);
-    
-    socket.emit('userNewLocation', user);
 }
 
 function drawUserFinishedTimes() {
