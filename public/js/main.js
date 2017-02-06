@@ -2,16 +2,22 @@ var socket;
 var grid;
 var user;
 var users;
-var canvasSize = 600; // Same as on server
-var nrOfRows = 5; // Same as on server
+var canvasSize = 650; // Same as on server
+var nrOfRows = 12; // Same as on server
 var cellWidth = cellHeight = canvasSize / nrOfRows;
 
-var offset = 4; // Small offset for smaller user box
+var offset = 4; // Small offset for the user ellipses
 
 var thisUserColor = '#e67e22';
 var othersColor = '#c0392b';
 
 var gameIsRunning = false;
+
+var startBtn = document.getElementById('startBtn');
+
+startBtn.addEventListener('click', function(){
+    document.getElementById('popup').style.display = 'none';
+});
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
@@ -21,7 +27,7 @@ function setup() {
     user = {
         i: 0,
         j: 0,
-        name: 'SomeName',
+        name: 'Unknown',
         finished: false,
         startTime: 0,
         endTime: 0,
