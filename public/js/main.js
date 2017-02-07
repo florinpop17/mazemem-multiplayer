@@ -93,15 +93,16 @@ function drawUserFinishedTimes() {
         } 
     });
     
+    fill(255);
+    textSize(16);
+    textAlign(RIGHT, CENTER);
+    noStroke();
+    text('Leaderboard', width - 30, 15);
     
     usersThatFinished.sort(function(a, b){
         return a.timeToComplete - b.timeToComplete;
     }).forEach((user,idx) => {
-        noStroke();
-        fill(255);
-        textSize(16);
-        textAlign(LEFT, CENTER);
-        text(`${user.name} - ${user.timeToComplete.toFixed(2)}`, 10, 20 * idx + 10);
+        text(`${user.name} - ${user.timeToComplete.toFixed(2)}`, width - 30, 16 * idx + 35);
     });
 }
 
