@@ -19,24 +19,18 @@ startBtn.addEventListener('click', function(){
     document.getElementById('popup').style.display = 'none';
     
     var newName = document.getElementById('name').value;
-    
-    if(newName){
-        user.name = newName;   
-    }
-    
-    gameIsRunning = true;
-    loop();
-});
-
-function setup() {
-    createCanvas(canvasSize, canvasSize);
-    
     socket = io.connect();
     
+    // Getting the grid && setting the user.id
+    socket.on('theGrid', function(_grid){
+        grid = _grid; 
+        user.id = socket.id;
+    });
+        
     user = {
         i: 0,
         j: 0,
-        name: 'Unknown',
+        name: newName,
         finished: false,
         startTime: 0,
         endTime: 0,
@@ -45,11 +39,12 @@ function setup() {
     
     socket.emit('start', user);
     
-    // Getting the grid && setting the user.id
-    socket.on('theGrid', function(_grid){
-        grid = _grid; 
-        user.id = socket.id;
-    });
+    gameIsRunning = true;
+    loop();
+});
+
+function setup() {
+    createCanvas(canvasSize, canvasSize);
     
     socket.on('tick', function(_users){
         users = _users;
