@@ -1,6 +1,16 @@
-var socket;
+// Default variables
+var socket = io.connect();
+var user = {
+    i: 0,
+    j: 0,
+    name: 'NoName',
+    finished: false,
+    startTime: 0,
+    endTime: 0,
+    timeToComplete: 0
+};
+
 var grid;
-var user;
 var users;
 var canvasSize = 650; // Same as on server
 var nrOfRows = 10; // Same as on server
@@ -19,23 +29,8 @@ startBtn.addEventListener('click', function(){
     document.getElementById('popup').style.display = 'none';
     
     var newName = document.getElementById('name').value;
-    socket = io.connect();
-    
-    // Getting the grid && setting the user.id
-    socket.on('theGrid', function(_grid){
-        grid = _grid; 
-        user.id = socket.id;
-    });
         
-    user = {
-        i: 0,
-        j: 0,
-        name: newName,
-        finished: false,
-        startTime: 0,
-        endTime: 0,
-        timeToComplete: 0
-    }
+    user.name = newName;
     
     socket.emit('start', user);
     
@@ -45,6 +40,12 @@ startBtn.addEventListener('click', function(){
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
+    
+    // Getting the grid && setting the user.id
+    socket.on('theGrid', function(_grid){
+        grid = _grid; 
+        user.id = socket.id;
+    });
     
     socket.on('tick', function(_users){
         users = _users;
@@ -100,7 +101,7 @@ function drawUserFinishedTimes() {
         fill(255);
         textSize(16);
         textAlign(LEFT, CENTER);
-        text(`${user.name} - ${user.timeToComplete}`, 10, 20 * idx + 10);
+        text(`${user.name} - ${user.timeToComplete.toFixed(2)}`, 10, 20 * idx + 10);
     });
 }
 
